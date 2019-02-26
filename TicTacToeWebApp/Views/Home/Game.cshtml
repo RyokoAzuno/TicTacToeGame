@@ -1,0 +1,105 @@
+﻿@model TicTacToeWebApp.Models.GameViewModel
+
+@{
+    ViewBag.Title = "Tic Tac Toe";
+}
+
+<div class="container container-fluid">
+    <table class="table table-bordered">
+        <tr>
+            <td class="bg-primary">
+                Player Name
+            </td>
+            <td class="bg-primary">
+                Symbol
+            </td>
+            <td class="bg-primary">
+                Number of Wins
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b class="text-info">@Html.DisplayFor(model => Model.Player1.Name)</b>
+            </td>
+            <td>
+                <b class="text-info">@Html.DisplayFor(model => Model.Player1.Symbol)</b>
+            </td>
+            <td>
+                <b class="text-info">@Html.DisplayFor(model => Model.Player1.NumOfWins)</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b class="text-info">@Html.DisplayFor(model => Model.Player2.Name)</b>
+            </td>
+            <td>
+                <b class="text-info">@Html.DisplayFor(model => Model.Player2.Symbol)</b>
+            </td>
+            <td>
+                <b class="text-info">@Html.DisplayFor(model => Model.Player2.NumOfWins)</b>
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Reset", "Reset",
+   new { firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+   new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+</div>
+
+<div class="container-fluid">
+    <div class="col-md-offset-4 col-md-4"><h3><b>@ViewBag.Winner</b></h3></div>
+    <table class="table table-bordered col-md-offset-4 col-md-4 my-table">
+        <tr>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[0].ToString(), "Changer",
+               new { id = 0, ch = Model.Board[0], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[1].ToString(),
+               "Changer", new { id = 1, ch = Model.Board[1], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[2].ToString(), "Changer",
+               new { id = 2, ch = Model.Board[2], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+        </tr>
+        <tr>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[3].ToString(), "Changer",
+               new { id = 3, ch = Model.Board[3], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[4].ToString(), "Changer",
+               new { id = 4, ch = Model.Board[4], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[5].ToString(), "Changer",
+               new { id = 5, ch = Model.Board[5], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+        </tr>
+        <tr>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[6].ToString(), "Changer",
+               new { id = 6, ch = Model.Board[6], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[7].ToString(), "Changer",
+               new { id = 7, ch = Model.Board[7], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+            <td class="my-td btn-primary">
+                @Html.ActionLink(Model.Board[8].ToString(), "Changer",
+               new { id = 8, ch = Model.Board[8], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+               new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TicTacToeWebApp.Models.PlayerViewModel>
+
+@{
+    ViewBag.Title = "Tic Tac Toe";
+}
+<br />
+<div class="container">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="control-label col-md-2"><b>Enter Player1 name:</b></div>
+                <div class="col-md-3">
+                    <input class="form-control" type="text" name="firstPlayerName" />
+                </div>
+                <div class="col-md-2">
+                    <div class="btn btn-danger disabled">X</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-md-2"><b>Enter Player2 name:</b></div>
+                <div class="col-md-3">
+                    <input class="form-control" type="text" name="secondPlayerName" />
+                </div>
+                <div class="col-md-2">
+                        <div class="btn btn-danger disabled">O</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input class="btn btn-primary btn-lg" type="submit" value="Start Game" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
