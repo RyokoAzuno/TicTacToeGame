@@ -24,7 +24,7 @@ namespace TicTacToeWebApp.Controllers
             // Set default values for players
             if (string.IsNullOrEmpty(firstPlayerName))
                 firstPlayerName = "Player1";
-            else if (string.IsNullOrEmpty(secondPlayerName))
+            if (string.IsNullOrEmpty(secondPlayerName))
                 secondPlayerName = "Player2";
 
             string board = "_________";
@@ -32,87 +32,73 @@ namespace TicTacToeWebApp.Controllers
             PlayerViewModel p2 = new PlayerViewModel { Name = secondPlayerName, Symbol = "O", NumOfWins = 0 };
             GameViewModel game = new GameViewModel(p1, p2, board, 0);
             Session["Game"] = game;
+            ViewBag.Message = $"It's your turn {game.Player1.Name}!!!";
 
-            return RedirectToAction("Game", new { firstPlayerName = game.Player1.Name, secondPlayerName = game.Player2.Name });
+            return PartialView("GamePartial", game);
         }
 
-        public ActionResult Game(string firstPlayerName, string secondPlayerName, bool? isRedirected)
+        // X or O on every step
+        public ActionResult Game(int? id, char? ch, string firstPlayerName, string secondPlayerName)
         {
             GameViewModel game = Session["Game"] as GameViewModel;
-            // Check if redirected from Reset action
-            if (isRedirected.HasValue)
-            {
-                game.Board = "_________";
-                game.Attempts = 0;
-                game.Player1.NumOfWins = game.Player2.NumOfWins = 0;
-            }
-            // Check if redirected from Winner action
-            if (TempData["FromWinner"] != null && (bool)TempData["FromWinner"] == true)
-            {
-                game.Board = "_________";
-                game.Attempts = 0;
-            }
+            game.Update(id);
             // Check for winner
             if (game.IsWinner(game.Player1.Symbol[0]))
             {
-                ViewBag.Winner = $"Winner is - {game.Player1.Name}!!!";
+                ViewBag.Message = $"Winner is - {game.Player1.Name}!!!";
                 ++game.Player1.NumOfWins;
                 Session["Game"] = game;
 
-                return RedirectToAction("Winner", new { firstPlayerName, secondPlayerName, game.Player1.Name });
+                return PartialView("WinnerPartial", game.Player1.Name);
             }
             else if (game.IsWinner(game.Player2.Symbol[0]))
             {
-                ViewBag.Winner = $"Winner is - {game.Player2.Name}!!!";
+                ViewBag.Message = $"Winner is - {game.Player2.Name}!!!";
                 ++game.Player2.NumOfWins;
                 Session["Game"] = game;
 
-                return RedirectToAction("Winner", new { firstPlayerName, secondPlayerName, game.Player2.Name });
+                return PartialView("WinnerPartial", game.Player2.Name);
             }
             // Check for Draw
             if (game.Attempts == 9)
             {
-                ViewBag.Winner = $"{game.Player1.Name} vs {game.Player2.Name} = DRAW!!!";
-                string name = null;
+                ViewBag.Message = $"{game.Player1.Name} vs {game.Player2.Name} = DRAW!!!";
                 Session["Game"] = game;
 
-                return RedirectToAction("Winner", new { firstPlayerName, secondPlayerName, name });
+                return PartialView("WinnerPartial", "Draw");
             }
-            // Check who's turn (even for X and odd for O)
             if (game.Attempts % 2 == 0)
             {
-                ViewBag.Winner = $"It's your turn {game.Player1.Name}!!!";
+                ViewBag.Message = $"It's your turn {game.Player1.Name}!!!";
             }
             else
             {
-                ViewBag.Winner = $"It's your turn {game.Player2.Name}!!!";
+                ViewBag.Message = $"It's your turn {game.Player2.Name}!!!";
             }
             Session["Game"] = game;
 
-            return View(game);
-        }
-        // X or O on every step
-        public ActionResult Changer(int? id, char? ch, string firstPlayerName, string secondPlayerName)
-        {
-            GameViewModel game = Session["Game"] as GameViewModel;
-            game.Update(id);
-            Session["Game"] = game;
-
-            return RedirectToAction("Game", new { firstPlayerName, secondPlayerName });
+            return PartialView("GamePartial", game);
         }
         // Reset game board and points
         public ActionResult Reset(string firstPlayerName, string secondPlayerName)
         {
-            bool isRedirected = true;
+            GameViewModel game = Session["Game"] as GameViewModel;
+            game.Reset();
+            Session["Game"] = game;
+            ViewBag.Message = $"It's your turn {game.Player1.Name}!!!";
 
-            return RedirectToAction("Game", new { firstPlayerName, secondPlayerName, isRedirected });
+            return PartialView("GamePartial", game);
         }
         // Winner action
         public ActionResult Winner(string firstPlayerName, string secondPlayerName, string name)
         {
-            TempData["FromWinner"] = true;
+            GameViewModel game = Session["Game"] as GameViewModel;
+            game.Board = "_________";
+            game.Attempts = 0;
+            Session["Game"] = game;
+            ViewBag.Message = $"It's your turn {game.Player1.Name}!!!";
 
-            return View();
+            return PartialView("GamePartial", game);
         }
     }
 }

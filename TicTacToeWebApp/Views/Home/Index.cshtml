@@ -1,11 +1,9 @@
-﻿@model IEnumerable<TicTacToeWebApp.Models.PlayerViewModel>
-
-@{
+﻿@{
     ViewBag.Title = "Tic Tac Toe";
 }
 <br />
-<div class="container">
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+<div id="game" class="container">
+    @using (Ajax.BeginForm("Index", new AjaxOptions { UpdateTargetId = "game" }))
     {
         <div class="form-horizontal">
             <div class="form-group">
