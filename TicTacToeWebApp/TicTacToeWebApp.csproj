@@ -180,7 +180,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\WinnerPartial.cshtml" />
+    <Content Include="Views\Home\ContinuePartial.cshtml" />
     <Content Include="Views\Home\GamePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

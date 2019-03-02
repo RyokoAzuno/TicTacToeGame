@@ -49,7 +49,7 @@ namespace TicTacToeWebApp.Controllers
                 ++game.Player1.NumOfWins;
                 Session["Game"] = game;
 
-                return PartialView("WinnerPartial", game.Player1.Name);
+                return PartialView("ContinuePartial", game.Player1.Name);
             }
             else if (game.IsWinner(game.Player2.Symbol[0]))
             {
@@ -57,7 +57,7 @@ namespace TicTacToeWebApp.Controllers
                 ++game.Player2.NumOfWins;
                 Session["Game"] = game;
 
-                return PartialView("WinnerPartial", game.Player2.Name);
+                return PartialView("ContinuePartial", game.Player2.Name);
             }
             // Check for Draw
             if (game.Attempts == 9)
@@ -65,7 +65,7 @@ namespace TicTacToeWebApp.Controllers
                 ViewBag.Message = $"{game.Player1.Name} vs {game.Player2.Name} = DRAW!!!";
                 Session["Game"] = game;
 
-                return PartialView("WinnerPartial", "Draw");
+                return PartialView("ContinuePartial", "Draw");
             }
             if (game.Attempts % 2 == 0)
             {
@@ -89,8 +89,8 @@ namespace TicTacToeWebApp.Controllers
 
             return PartialView("GamePartial", game);
         }
-        // Winner action
-        public ActionResult Winner(string firstPlayerName, string secondPlayerName, string name)
+        // Continue action(after draw or win)
+        public ActionResult Continue(string firstPlayerName, string secondPlayerName, string name)
         {
             GameViewModel game = Session["Game"] as GameViewModel;
             game.Board = "_________";

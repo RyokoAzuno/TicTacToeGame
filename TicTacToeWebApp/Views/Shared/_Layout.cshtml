@@ -20,7 +20,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("New Game", "Index", "Home")</li>
+                    <li>@Ajax.ActionLink("New Game", "Index", null, new AjaxOptions { UpdateTargetId = "game" }, null)</li>
                 </ul>
             </div>
         </div>
