@@ -38,7 +38,7 @@ namespace TicTacToeWebApp.Controllers
         }
 
         // X or O on every step
-        public ActionResult Game(int? id, char? ch, string firstPlayerName, string secondPlayerName)
+        public ActionResult Game(int? id, string firstPlayerName, string secondPlayerName)
         {
             GameViewModel game = Session["Game"] as GameViewModel;
             game.Update(id);
@@ -67,6 +67,7 @@ namespace TicTacToeWebApp.Controllers
 
                 return PartialView("ContinuePartial", "Draw");
             }
+            // Check for turn
             if (game.Attempts % 2 == 0)
             {
                 ViewBag.Message = $"It's your turn {game.Player1.Name}!!!";
@@ -80,7 +81,7 @@ namespace TicTacToeWebApp.Controllers
             return PartialView("GamePartial", game);
         }
         // Reset game board and points
-        public ActionResult Reset(string firstPlayerName, string secondPlayerName)
+        public ActionResult Reset()
         {
             GameViewModel game = Session["Game"] as GameViewModel;
             game.Reset();
@@ -90,7 +91,7 @@ namespace TicTacToeWebApp.Controllers
             return PartialView("GamePartial", game);
         }
         // Continue action(after draw or win)
-        public ActionResult Continue(string firstPlayerName, string secondPlayerName, string name)
+        public ActionResult Continue(string name)
         {
             GameViewModel game = Session["Game"] as GameViewModel;
             game.Board = "_________";

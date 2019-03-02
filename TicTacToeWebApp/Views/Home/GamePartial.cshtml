@@ -35,8 +35,7 @@
         </td>
     </tr>
 </table>
-@Ajax.ActionLink("Reset", "Reset", new { firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
-new AjaxOptions { UpdateTargetId = "game"},
+@Ajax.ActionLink("Reset", "Reset", null , new AjaxOptions { UpdateTargetId = "game"},
 new { @class = "btn-primary btn-lg text-size-lg btn-block text-center col-md-12", @style = "text-decoration:none;" })
 <div class="col-md-offset-4 col-md-4"><h3><b>@ViewBag.Message</b></h3></div>
 
@@ -44,19 +43,19 @@ new { @class = "btn-primary btn-lg text-size-lg btn-block text-center col-md-12"
     <tr>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[0].ToString(), "Game",
-           new { id = 0, ch = Model.Board[0], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 0, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[1].ToString(), "Game",
-           new { id = 1, ch = Model.Board[1], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 1, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[2].ToString(), "Game",
-           new { id = 2, ch = Model.Board[2], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 2, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>
@@ -64,19 +63,19 @@ new { @class = "btn-primary btn-lg text-size-lg btn-block text-center col-md-12"
     <tr>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[3].ToString(), "Game",
-           new { id = 3, ch = Model.Board[3], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 3, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[4].ToString(), "Game",
-           new { id = 4, ch = Model.Board[4], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 4, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[5].ToString(), "Game",
-           new { id = 5, ch = Model.Board[5], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 5, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>
@@ -84,19 +83,19 @@ new { @class = "btn-primary btn-lg text-size-lg btn-block text-center col-md-12"
     <tr>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[6].ToString(), "Game",
-           new { id = 6, ch = Model.Board[6], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 6, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[7].ToString(), "Game",
-           new { id = 7, ch = Model.Board[7], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 7, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>
         <td class="my-td btn-primary">
             @Ajax.ActionLink(Model.Board[8].ToString(), "Game",
-           new { id = 8, ch = Model.Board[8], firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
+           new { id = 8, firstPlayerName = Model.Player1.Name, secondPlayerName = Model.Player2.Name },
            new AjaxOptions { UpdateTargetId = "game" },
            new { @class = "btn-primary btn-lg text-size-lg btn-block text-center", @style = "text-decoration:none;" })
         </td>

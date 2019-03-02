@@ -8,9 +8,7 @@ else
 {
     <h2>GRATZ!!! @Model - you are the Winner!!!</h2>
 }
-@Ajax.ActionLink("Continue To Play", "Continue",
-    new { firstPlayerName = (Session["Game"] as TicTacToeWebApp.Models.GameViewModel).Player1.Name,
-        secondPlayerName = (Session["Game"] as TicTacToeWebApp.Models.GameViewModel).Player2.Name,
-        name = Model },
+@Ajax.ActionLink("Continue To Play", "Continue", 
+      new { name = Model },
     new AjaxOptions { UpdateTargetId = "game" }, new { @class = "btn btn-primary btn-lg" })
 @Html.ActionLink("New Game", "Index", null, new { @class = "btn btn-primary btn-lg" })
